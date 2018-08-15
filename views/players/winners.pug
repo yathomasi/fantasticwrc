@@ -1,0 +1,93 @@
+extends ../layout
+block content 
+	section.content-header 
+		h1 
+			| List of Winners
+			small &nbsp;it all ends here
+		ol.breadcrumb 
+			//-li 
+				a(href='#') 
+					i.fa.fa-dashboard
+					| Level 
+			li.active &nbsp; Winners List
+	section.content
+		.box
+			.box-header.with-border
+				h3.box-title
+					a(href='players/list').pull-left.btn.btn-primary
+						i.fa.fa-th-list 
+						|  List All Players
+					| Players
+					.box-tools.pull-right
+						a.btn.btn-primary(data-toggle="collapse" data-target="#collapseme" title='collapse')
+							i.fa.fa-minus
+					//- a(class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample")
+						i.fa.fa-minus
+					//- button(type='button', data-widget='collapse', data-toggle='tooltip',title='collapse').btn.btn-box-tool
+						i.fa.fa-minus
+			.box-body
+				- if(messages.msg_info)
+					.alert.alert-success.alert-dismissable(role=alert)
+						button.close(type='button', data-dismiss='alert', aria-label="Close")
+							span(aria-hidden='true')
+								| &times;
+						h4
+							i.icon.fa.fa-check
+							| Success!
+						| !{messages.msg_info}
+				- if(messages.msg_error)
+					.alert.alert-danger.alert-dismissable
+						button.close(type='button', data-dismiss='alert', aria-label="Close")
+							span(aria-hidden='true')
+								| &times;
+						h4
+							i.icon.fa.fa-ban
+							| Alert!
+						| !{messages.msg_error}
+				
+				.collapse.in#collapseme
+					.data-table
+						table.table.table-bordered
+							tr
+								th
+									| GW
+								th
+									| Name
+								th
+									| Team
+								th
+									| Address
+								th
+									| Email
+								th
+									| Phone
+								th
+									| Action
+								if messages.msg_error
+									| !{messages.msg_error}
+								else
+									for row in data 
+										tr
+											td #{row.num}
+											td #{row.name}
+											td #{row.team}
+											td #{row.address}
+											td #{row.email}
+											td #{row.phone}
+											td
+												div(style='display:inline-block')
+													a(href='/players/edit/'+row.id).btn.btn-sm.btn-primary
+															i.fa.fa-edit
+												| 
+												div(style='display:inline-block')
+													form(method='post', action='/players/winners/delete/'+row.num)
+														input(type="hidden",name="_method", value="DELETE")
+														button.btn.btn-sm.btn-danger(type='submit' name="delete" value='Delete' onClick="return confirm('Are you sure? It will remove the player.')")
+															i.fa.fa-times-circle
+//- append scripts
+//- 	script
+//- 		$(document).ready(function(){
+//- 		 $("#collapseme").click(function() {
+//- 			alert("sas");
+//- 		 });
+//- 		});

@@ -1,0 +1,54 @@
+body {
+  /* padding: 50px; */
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* min-height: 2000px; */
+  padding-top: 70px;
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+.content-header h1 {
+  text-align: center;
+}
+
+/* .box-body {
+  margin: auto;
+  width: 80%;
+} */
+
+.full-width {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.container.home {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.container.home a:hover {
+  text-decoration: none;
+}
+
+section.content {
+  padding: auto;
+}
+
+.center {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+h3.box-title {
+  text-align: center;
+}

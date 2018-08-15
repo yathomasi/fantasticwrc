@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    section.content-header
+        h1
+            |Login
+    
+    section.content
+        .box
+            .box-body
+                form(role='form' action='/login' method='post')
+                        .col-md-6.col-md-offset-3
+                            .box-body
+                                - if (messages.msg_error) 
+                                    .alert.alert-danger.alert-dismissable(role=alert)
+                                        button.close(type='button', data-dismiss='alert',aria-label="Close")
+                                            span(aria-hidden='true')
+                                                | &times;
+                                        h4
+                                            i.icon.fa.fa-ban
+                                            | Alert!
+                                        | !{messages.msg_error}
+                                .form-group
+                                    label Username:
+                                    input(type='text',value=name,name='user',placeholder='Username', autofocus).form-control
+                                .form-group
+                                    label Password:
+                                    input(type='password',name="pass",placeholder="Password").form-control
+                            .box-footer
+                                button(type='submit').btn.btn-primary
+                                    |Login

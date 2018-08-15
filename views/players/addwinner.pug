@@ -1,0 +1,64 @@
+//- extends ../layout
+
+//- block content
+//-     .container.home
+//-         .page-header
+//-                 h1=title
+
+extends ../layout
+block content
+    section.content-header 
+        h1 
+            | Add Winners Here
+
+        ol.breadcrumb 
+            //-li 
+                a(href='#') 
+                    i.fa.fa-dashboard
+                    | Level 
+            li.active &nbsp; Winners Add
+    section.content
+        .box
+            //- .box-header.with-border
+            //-     h3.box-title
+            //-         | Players
+                //- .box-tools.pull-right
+                //- 	button(type='button', data-widget='collapse', data-toggle='tooltip',title='collapse').btn.btn-box-tool
+                //- 		i.fa.fa-minus
+                    
+            .box-body
+                form(role='form' method='post' action='/players/addwinner')
+                        .col-md-6.col-md-offset-3
+                            .box-body
+                                - if (messages.msg_error) 
+                                    .alert.alert-danger.alert-dismissable(role=alert)
+                                        button.close(type='button', data-dismiss='alert',aria-label="Close")
+                                            span(aria-hidden='true')
+                                                | &times;
+                                        h4
+                                            i.icon.fa.fa-ban
+                                            | Alert!
+                                        | !{messages.msg_error}
+                                .form-group
+                                    label(for="sel1")
+                                        | GW
+                                    select.form-control#sel1(name='gameweek')
+                                        option(value="gw" selected) Select GameWeek
+                                        -for(var n=1;n<=38;n++)
+                                            option(value=n)=n
+                                      
+                                .form-group
+                                    label(for="sel2")
+                                        | Player Select
+                                    select.form-control#sel2(name='winner')
+                                        option(value="win" selected) Select Winner
+                                        for row in data
+                                            option(value=row.id) #{row.name}
+
+
+                            .box-footer
+                                button(type='submit').btn.btn-primary
+                                    | Submit
+                                a(href='/players/winners').btn.btn-primary.pull-right
+                                    | Back
+

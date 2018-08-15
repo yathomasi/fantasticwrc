@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .container.home
+    .page-header
+      a(href='/')
+        h1=title
+    p.lead
+      | Is this the real life? 
+      | Is this just #{title} ?
+    br
+    br
+    p.
+      Want to add Some Players to the Fantasy League.Click the button below!!!
+    a(href='players/add').btn.btn-primary
+            i.fa.fa-plus 
+            |  Add Players
+    br
+    br
+    p.
+      Find all the joined players.
+    a(href='/players').btn.btn-primary
+            i.fa.fa-th-list
+            |  List All Players 
+    br
+    br
+    p.
+      Let's See Who are winners.
+    a(href='/players/winners').btn.btn-primary
+            i.fa.fa-list-alt
+            |  See Winners
+            i.fa.fa-trophy 
+            i.fa.fa-trophy 
+            i.fa.fa-trophy
+
