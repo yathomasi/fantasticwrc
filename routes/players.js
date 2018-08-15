@@ -41,7 +41,7 @@ router.post('/add', function (req, res, next) {
             user:req.user
           });
         }
-      })
+      });
     });
     //mysql for create with insert
     var insert_sql = 'INSERT INTO users SET ?';
