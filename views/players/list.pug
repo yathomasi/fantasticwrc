@@ -51,10 +51,10 @@ block content
 							tr
 								th.th-sm
 									| No
-									i.fa.fa-sort.float-right(aria-hidden=true)
+									
 								th.th-sm
 									| Name
-									i.fa.fa-sort.float-right(aria-hidden=true)
+									
 								th
 									| Team
 								th
@@ -63,6 +63,8 @@ block content
 									| Email
 								th
 									| Phone
+								th
+									| Fav Club
 								th
 									| Action
 								if messages.msg_error
@@ -76,6 +78,7 @@ block content
 											td #{row.address}
 											td #{row.email}
 											td #{row.phone}
+											td #{row.favteam}
 											td
 												div(style='display:inline-block')
 													a(href='/players/edit/'+row.id).btn.btn-sm.btn-primary

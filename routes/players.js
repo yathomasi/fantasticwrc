@@ -17,16 +17,18 @@ router.post('/add', function (req, res, next) {
     v_email = req.sanitize('email').escape().trim();
     v_address = req.sanitize('address').escape().trim();
     v_phone = req.sanitize('phone').escape();
+    v_favteam = req.sanitize('favteam').escape().trim();
 
     var player = {
       name: v_name,
       team: v_team,
       address: v_address,
       email: v_email,
-      phone: v_phone
+      phone: v_phone,
+      favteam: v_favteam
     };
     //mysql to create db if don't exists
-    var create_sql = 'CREATE TABLE IF NOT EXISTS players(id int(10) not null auto_increment primary key,gw int(5) not null unique, name varchar(200)  NOT NULL,team varchar(100)  NOT NULL,favclub varchar(100) not null,phone varchar(20) NOT NULL, paid text not null)';
+    var create_sql = 'CREATE TABLE IF NOT EXISTS players(id int(10) not null auto_increment primary key,gw int(5) not null unique, name varchar(200)  NOT NULL,team varchar(100)  NOT NULL,favteam varchar(100) not null,phone varchar(20) NOT NULL, paid text not null)';
     req.getConnection(function (err, connection) {
       var query = connection.query(create_sql, function (err) {
         if (err) {
@@ -38,6 +40,7 @@ router.post('/add', function (req, res, next) {
             address: req.param('address'),
             email: req.param('email'),
             phone: req.param('phone'),
+            favteam: req.param('favteam'),
             user:req.user
           });
         }
@@ -56,6 +59,7 @@ router.post('/add', function (req, res, next) {
             address: req.param('address'),
             email: req.param('email'),
             phone: req.param('phone'),
+            favteam: req.param('favteam'),
             user:req.user
           });
         } else {
@@ -90,6 +94,7 @@ router.get('/add', function (req, res, next) {
     email: '',
     phone: '',
     address: '',
+    favteam: '',
     user:req.user
   });
 });
