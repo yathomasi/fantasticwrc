@@ -104,7 +104,7 @@ router.get("/", function (req, res, next) {
   // res.render("players", { title: "Players" });
   req.getConnection(function (err, connection) {
     //mysql select query to retrieve data
-    var query = connection.query("SELECT * FROM users ORDER BY name", function (err, rows) {
+    var query = connection.query("SELECT * FROM users ", function (err, rows) {
       if (err) {
         var errors_detail = ("Error Selecting : %s ", err);
         req.flash("msg_error", errors_detail);
